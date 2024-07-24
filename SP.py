@@ -299,7 +299,7 @@ S_T = _task
 #设置起点和终点
 
 # S_T = {0:[0,6],1:[8,10],2:[7,2],3:[12,1],4:[16,5],5:[8,15]}
-data.vehicleNum = len(_task)  ##设置车辆数
+data.vehicleNum = len(_task)  ##车辆数就是任务的数量
 x = solve_model(model,node_list,k,S_T)
 key_list = []
 for key in x.keys():
