@@ -283,7 +283,7 @@ def solve_model(model,node_list,vehNum,S_T):
         if (x[key].x > 0):
             print(x[key].VarName + ' = ', x[key].x)
 
-    model.write('VRPTW.lp')
+    model.write('SPQ.lp')
     return x
 ##################
 k = 0
@@ -299,7 +299,7 @@ S_T = _task
 #设置起点和终点
 
 # S_T = {0:[0,6],1:[8,10],2:[7,2],3:[12,1],4:[16,5],5:[8,15]}
-data.vehicleNum = 6  ##设置车辆数
+data.vehicleNum = len(_task)  ##设置车辆数
 x = solve_model(model,node_list,k,S_T)
 key_list = []
 for key in x.keys():
@@ -340,33 +340,6 @@ def draw(x_list, y_list, k_list):
                         node_class[v].remove(node_class[v][j])
                         break
         
-
-
-
-    # x = {}
-    # y = {}
-
-    # for v in route:
-    #     x[v] = []
-    #     y[v] = []
-    #     for e in route[v]:
-    #         x[v].append(x_list[e])
-    #         y[v].append(y_list[e])
-
-    # ax = plt.gca()
-    #
-    # for v in route:
-    #     ax.scatter(x[v], y[v], s=50, alpha=0.8)
-    #     ax.plot(x[v], y[v], linewidth=2.5)
-    #
-    # for k in range(len(x_list)):
-    #      plt.text(city_location_Xlist[k], city_location_Ylist[k] + 0.3, str(k), ha='center', va='bottom', fontsize=10.5)
-    #
-    # # plt.text(-3, 70, 1, size=15, alpha=1)
-    # ax.scatter(x_list[0], y_list[0], c='k')
-    # plt.text(20, 20, model.ObjVal, size=10, alpha=1)
-
-    # plt.show()
 
     return node_class_,route
 
